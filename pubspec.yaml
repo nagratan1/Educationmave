@@ -40,6 +40,9 @@ dependencies:
   youtube_player_flutter: ^9.1.1
   fluttertoast: ^8.2.1
   pdfrx: 
+  get: 
+  google_fonts: 
+  google_maps_flutter: 
   
 
 dev_dependencies:

@@ -1,5 +1,7 @@
 import 'package:education/Screen/HomePage.dart';
+
 import 'package:education/Screen/drower.dart';
+import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 
@@ -17,6 +19,7 @@ class _DashboardState extends State<Dashboard> {
   static final List<Widget> _widgetOptions = <Widget>[
      ApniKakshaAppScreen(),
      ApniKakshaAppScreenn(),
+      ApniKakshaAppScreenn(),
     //  PaymentHistoryScreen(), 
     //  Profile(),
   ];
@@ -30,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: AppColor.Allcolor,
       body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -49,7 +52,7 @@ class _DashboardState extends State<Dashboard> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber,
+        selectedItemColor: AppColor.dashbord,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,

@@ -1,17 +1,17 @@
-import 'package:education/JEE/JEEIntro.dart';
+import 'package:education/Group%20D/GroupDIntro.dart';
 import 'package:education/JEE/MathsVgSir.dart';
 import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class JEEList extends StatefulWidget {
-  const JEEList({super.key});
+class Group_D_List extends StatefulWidget {
+  const Group_D_List({super.key});
 
   @override
-  State<JEEList> createState() => _JEEListState();
+  State<Group_D_List> createState() => _Group_D_ListState();
 }
 
-class _JEEListState extends State<JEEList> {
+class _Group_D_ListState extends State<Group_D_List> {
  List<String> data=[
   'Intro',
   'Maths(VG Sir)',
@@ -36,7 +36,7 @@ class _JEEListState extends State<JEEList> {
            Navigator.of(context).pop();
           },
           child: Icon(Icons.arrow_back,color: Colors.white,)),
-        title: Text("JEE - 2025 (MAIN & ADV) 11...",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: Colors.white),),
+        title: Text("GROUP D - 2025 (MAIN & ADV) 11...",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: Colors.white),),
      actions: [Padding(
        padding: const EdgeInsets.only(right: 20),
        child: Icon(FontAwesomeIcons.whatsapp,
@@ -78,7 +78,7 @@ class _JEEListState extends State<JEEList> {
                 onTap: () {
                   index==0?Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Jeeintro()),
+                    MaterialPageRoute(builder: (context) => Groupdintro()),
                   ):null;
                   index==1?Navigator.push(
                     context,
@@ -163,6 +163,5 @@ class _JEEListState extends State<JEEList> {
       
     );
   }
-
 
 }

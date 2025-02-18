@@ -1,5 +1,6 @@
 import 'package:education/11thCalss(VOD%20Batch)/Intro.dart';
 import 'package:education/11thCalss(VOD%20Batch)/MathsSBSir.dart';
+import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -27,7 +28,7 @@ List<String> data=[
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: AppColor.dashbord,
         leading: InkWell(
           onTap: (){
            Navigator.of(context).pop();
@@ -83,7 +84,7 @@ List<String> data=[
                               width: 55,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
-                                  color: Colors.blue),
+                                  color: AppColor.Allcolor),
                               child: Icon(Icons.text_fields_rounded, color: Colors.white)),
                           title: Text(
                             data[index],
@@ -108,7 +109,7 @@ List<String> data=[
               left: 10,
               right: 10,
               child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.blue,),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: AppColor.dashbord,),
                
                 padding: EdgeInsets.all(16),
                 child: Row(
@@ -131,4 +132,7 @@ List<String> data=[
       
     );
   }
+
+
+
 }

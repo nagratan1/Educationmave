@@ -1,3 +1,4 @@
+import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.blue,
+      backgroundColor:AppColor.dashbord,
       leading: IconButton(
         icon: Icon(Icons.menu, color: Colors.white),
         onPressed: () {

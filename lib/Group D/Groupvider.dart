@@ -1,17 +1,17 @@
-import 'package:education/11thCalss(VOD%20Batch)/youtube.dart';
+import 'package:education/JEE/JEEVideoPlay.dart';
 import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:video_player/video_player.dart';
 
-class MathsSBDEMO extends StatefulWidget {
-  const MathsSBDEMO({super.key});
+class GroupvideoList extends StatefulWidget {
+  const GroupvideoList({super.key});
 
   @override
-  State<MathsSBDEMO> createState() => _MathsSBDEMOState();
+  State<GroupvideoList> createState() => _GroupvideoListState();
 }
 
-class _MathsSBDEMOState extends State<MathsSBDEMO> {
+class _GroupvideoListState extends State<GroupvideoList> {
  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int _selectedTabIndex = 0;
    late VideoPlayerController _controller;
@@ -52,76 +52,119 @@ class _MathsSBDEMOState extends State<MathsSBDEMO> {
         return SizedBox.shrink();
     }
   }
-
-  Widget _buildAllContent() {
-    return  ListView.builder(
-         itemCount:1,
-         scrollDirection: Axis.vertical,
-         itemBuilder: (context, index) {
-           return InkWell(
-             onTap: () {
-               index == 0
-           ? Navigator.push(
-               context,
-               MaterialPageRoute(builder: (context) => Youtube()),
-             )
-           : null;
-               
-             },
-             child: Padding(
-               padding: const EdgeInsets.only(left: 5, right: 5,top: 10),
-               child: Container(
-                 margin: EdgeInsets.all(2),
-                 height: MediaQuery.of(context).size.height / 6,
-                //  width: MediaQuery.of(context).size.width / 1,
-                 decoration: BoxDecoration(boxShadow: [
-                   BoxShadow(
-                     offset: Offset(2, 2),
-                     blurRadius: 12,
-                     color: Color.fromRGBO(0, 0, 0, 0.6),
-                   )
-                 ], borderRadius: BorderRadius.circular(8), color: Colors.white),
-                 child: Padding(
-                   padding: const EdgeInsets.only(top: 0),
-                   child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height/4,
-                          width: MediaQuery.of(context).size.width/2.5, 
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(9),color:Colors.amber),
-                          child: _controller.value.isInitialized
-              ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
+Widget _buildAllContent() {
+  return ListView.builder(
+    itemCount: 6,
+    scrollDirection: Axis.vertical,
+    itemBuilder: (context, index) {
+      return InkWell(
+        onTap: () {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Jeevideoplay()),
+            );
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5, right: 5, top: 10),
+          child: Container(
+            margin: EdgeInsets.all(2),
+            height: MediaQuery.of(context).size.height / 6,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(2, 2),
+                  blurRadius: 12,
+                  color: Color.fromRGBO(0, 0, 0, 0.6),
                 )
-              : Container(),
+              ],
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.white,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.height / 4,
+                          width: MediaQuery.of(context).size.width / 2.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(9),
+                            //color: Colors.amber,
+                          ),
+                          child: _controller.value.isInitialized
+                              ? AspectRatio(
+                                  aspectRatio: _controller.value.aspectRatio,
+                                  child: VideoPlayer(_controller),
+                                )
+                              : Container(),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Column(
-                          children: [
-                            Text("Maths Demo Class "),
-                            SizedBox(height: 40,),
-                            Text("17-Apr-2024 19:44 ")
-                          ],
+                        // Duration Overlay
+                        Positioned(
+                          bottom: 5,
+                          right: 5,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 4, horizontal: 6),
+                            decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              _controller.value.isInitialized
+                                  ? _formatDuration(
+                                      _controller.value.duration)
+                                  : "00:00",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
                         ),
-                      )
-                    ],
-                   )
-                 ),
-               ),
-             ),
-           );
-         },
-         
-             );
-  
-  
-  }
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Maths Demo Class"),
+                        SizedBox(height: 40),
+                        Text("17-Apr-2024 19:44"),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
 
+// Helper function to format the duration
+String _formatDuration(Duration duration) {
+  String twoDigits(int n) => n.toString().padLeft(2, '0');
+  String minutes = twoDigits(duration.inMinutes.remainder(60));
+  String seconds = twoDigits(duration.inSeconds.remainder(60));
+  return "${duration.inHours > 0 ? '${twoDigits(duration.inHours)}:' : ''}$minutes:$seconds";
+}
+
+
+
+  
+  
+  
+  
   Widget _buildJeeContent() {
     return  Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -154,7 +197,7 @@ class _MathsSBDEMOState extends State<MathsSBDEMO> {
               color: Colors.white,
             )),
         title: Text(
-          "11TH CLASS (VOD BATCH)",
+          "GROUP D - 2025 (MAIN & ADV) 11...",
           style: TextStyle(
               fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white),
         ),
@@ -234,7 +277,7 @@ class CustomTab extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-              color: isSelected ? AppColor.dashbord : Colors.white,
+              color: isSelected ? AppColor.Allcolor : Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

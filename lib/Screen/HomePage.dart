@@ -317,7 +317,7 @@ class _ApniKakshaAppScreenState extends State<ApniKakshaAppScreen> {
     return Scaffold(
  key: _scaffoldKey,
       appBar: CustomAppBar(
-        title: "Education App",
+        title: "SING IN ",
         scaffoldKey: _scaffoldKey,
       ),
       drawer: CustomDrawer(),

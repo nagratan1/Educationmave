@@ -1,32 +1,41 @@
-import 'package:education/Dashboard/DashboardScreen.dart';
+
+import 'package:education/MyRoutes/myPagesName.dart';
+import 'package:education/MyRoutes/myroutename.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+
 
 void main() {
    WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.blueAccent,
-    ),
-  );
+ // Get.lazyPut<LoginController>(() => LoginController());
   runApp(const MyApp());
-}
+} 
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Education',
-      theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        
+        //statusBarColor:AppColor.dashbord,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.dark,
       ),
-      home: Dashboard(),
+    );
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "SING IN",
+      //theme: AppTheme.appTheme,
+      initialRoute: MyPagesName.splash,
+      getPages: MyRoute.list,
     );
   }
 }

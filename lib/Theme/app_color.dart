@@ -10,7 +10,8 @@ class AppColor {
   static Color splashColor = myColor;
   static Color black = Colors.black;
   static Color product= Color.fromARGB(255, 143, 137, 137);
- static Color dashbord=const Color(0xff184268);
+ static Color dashbord=const Color(0xff272264);
+ static Color Allcolor=Color(0xffB58B43);
   //color for pages
   static Color secondaryColour = const Color(0xffd2b14e);
   static Color secondaryColour_700 = const Color(0xffd2b14e);

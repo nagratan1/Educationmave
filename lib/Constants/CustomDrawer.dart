@@ -1,6 +1,7 @@
 import 'package:education/Drawer%20Screen/FAQS.dart';
 import 'package:education/Drawer%20Screen/Order.dart';
 import 'package:education/Drawer%20Screen/TestSeries.dart';
+import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
@@ -18,14 +19,14 @@ class CustomDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: AppColor.Allcolor,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(25),
               ),
             ),
             child: Center(
               child: Text(
-                'Education',
+                ' SING IN',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

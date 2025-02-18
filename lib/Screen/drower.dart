@@ -1,7 +1,10 @@
 import 'package:education/11thCalss(VOD%20Batch)/11classbatchlist.dart';
 import 'package:education/Constants/Appber.dart';
 import 'package:education/Constants/CustomDrawer.dart';
+import 'package:education/Group%20D/GroupdList.dart';
 import 'package:education/JEE/JEEList.dart';
+import 'package:education/NEET/NEETList.dart';
+import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
@@ -12,8 +15,6 @@ class ApniKakshaAppScreenn extends StatefulWidget {
 
 class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
     with SingleTickerProviderStateMixin {
-
-      
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int _selectedTabIndex = 0;
 
@@ -44,12 +45,18 @@ class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
     _controller.dispose();
     super.dispose();
   }
-  List<String> classdata=[
-   '11th Class (VOD Batch)',
-   '11th Class (VOD Batch)',
-   'JEE - 2025 (Main & Adv) 11th'
 
+  List<String> classdata = [
+    '11th Class (VOD Batch)',
+    '11th Class (VOD Batch)',
+    'JEE - 2025 (Main & Adv) 11th',
+    'NEET - 2025 (Main & Adv) 11th',
+    'GROUP D - 2025 (Main & Adv) 11th',
+    
   ];
+  List<String> JEEclassdata = ['JEE - 2025 (Main & Adv) 11th'];
+  List<String> NEETclassdata = ['NEET - 2025 (Main & Adv) 11th'];
+  List<String> Groupdclassdata = ['Group D  - 2025 (Main & Adv) 11th'];
 
   // Tab-specific content
   Widget _buildTabContent() {
@@ -57,34 +64,18 @@ class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
       case 0:
         return _buildAllContent();
       case 1:
-        return Center(
-          child: Text(
-            "JEE Content",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        );
+        return _buildJeeContent();
       case 2:
-        return Center(
-          child: Text(
-            "Boards Content",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        );
+        return _buildNEETContent();
       case 3:
-        return Center(
-          child: Text(
-            "Free Content",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        );
+        return _buildDgroupContent();
       default:
         return SizedBox.shrink();
     }
   }
 
   Widget _buildAllContent() {
-    return 
-    ListView.builder(
+    return ListView.builder(
       itemCount: classdata.length,
       scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
@@ -96,9 +87,258 @@ class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
                     MaterialPageRoute(builder: (context) => Classbatch()),
                   )
                 : null;
-                index==2?Navigator.push(
+            index == 2
+                ? Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => JEEList()),
+                  )
+                : null;
+                 index == 3
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Neetlist()),
+                  )
+                : null;
+                index == 4
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Group_D_List()),
+                  )
+                : null;
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 5, right: 5),
+            child: Container(
+              margin: EdgeInsets.all(2),
+              height: MediaQuery.of(context).size.height / 8,
+              width: MediaQuery.of(context).size.width / 1,
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  offset: Offset(2, 2),
+                  blurRadius: 12,
+                  color: Color.fromRGBO(0, 0, 0, 0.16),
+                )
+              ], borderRadius: BorderRadius.circular(8), color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 18),
+                child: ListTile(
+                  leading: Container(
+                      height: 60,
+                      width: 55,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: AppColor.Allcolor),
+                      child: Icon(Icons.api_sharp, color: Colors.white)),
+                  title: Text(
+                    classdata[index],
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  ),
+                  subtitle: Text('Top to see your courses'),
+                  trailing: index == 2
+                      ? null
+                      : Container(
+                          height: 25,
+                          width: 60,
+                          color: AppColor.Allcolor,
+                          child: Row(
+                            children: [
+                              FadeTransition(
+                                opacity: _opacityAnimation,
+                                child: Icon(
+                                  LucideIcons.dot,
+                                  size: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                'NEW',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      //   padding: EdgeInsets.all(16.0),
+      // children: [
+      //   Text("fgyhuij")
+
+      // ],
+    );
+  }
+
+  Widget _buildJeeContent() {
+    return ListView.builder(
+      itemCount: JEEclassdata.length,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            index == 0
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => JEEList()),
+                  )
+                : null;
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 5, right: 5),
+            child: Container(
+              margin: EdgeInsets.all(2),
+              height: MediaQuery.of(context).size.height / 8,
+              width: MediaQuery.of(context).size.width / 1,
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  offset: Offset(2, 2),
+                  blurRadius: 12,
+                  color: Color.fromRGBO(0, 0, 0, 0.16),
+                )
+              ], borderRadius: BorderRadius.circular(8), color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 18),
+                child: ListTile(
+                  leading: Container(
+                      height: 60,
+                      width: 55,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: AppColor.Allcolor),
+                      child: Icon(Icons.api_sharp, color: Colors.white)),
+                  title: Text(
+                    JEEclassdata[index],
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  ),
+                  subtitle: Text('Top to see your courses'),
+                  trailing: index == 2
+                      ? null
+                      : Container(
+                          height: 25,
+                          width: 60,
+                          color:AppColor.Allcolor,
+                          child: Row(
+                            children: [
+                              FadeTransition(
+                                opacity: _opacityAnimation,
+                                child: Icon(
+                                  LucideIcons.dot,
+                                  size: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                'NEW',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      //   padding: EdgeInsets.all(16.0),
+      // children: [
+      //   Text("fgyhuij")
+
+      // ],
+    );
+  }
+
+  Widget _buildNEETContent() {
+    return ListView.builder(
+      itemCount: NEETclassdata.length,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            index == 0
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Neetlist()),
+                  )
+                : null;
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 5, right: 5),
+            child: Container(
+              margin: EdgeInsets.all(2),
+              height: MediaQuery.of(context).size.height / 8,
+              width: MediaQuery.of(context).size.width / 1,
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  offset: Offset(2, 2),
+                  blurRadius: 12,
+                  color: Color.fromRGBO(0, 0, 0, 0.16),
+                )
+              ], borderRadius: BorderRadius.circular(8), color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 18),
+                child: ListTile(
+                  leading: Container(
+                      height: 60,
+                      width: 55,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: AppColor.Allcolor),
+                      child: Icon(Icons.api_sharp, color: Colors.white)),
+                  title: Text(
+                    NEETclassdata[index],
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  ),
+                  subtitle: Text('Top to see your courses'),
+                  trailing: index == 2
+                      ? null
+                      : Container(
+                          height: 25,
+                          width: 60,
+                          color: AppColor.Allcolor,
+                          child: Row(
+                            children: [
+                              FadeTransition(
+                                opacity: _opacityAnimation,
+                                child: Icon(
+                                  LucideIcons.dot,
+                                  size: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                'NEW',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+ 
+ Widget _buildDgroupContent() {
+    return ListView.builder(
+      itemCount: Groupdclassdata.length,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            index == 0
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Group_D_List()),
                   )
                 : null;
           },
@@ -126,7 +366,7 @@ class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
                           color: Colors.blue),
                       child: Icon(Icons.api_sharp, color: Colors.white)),
                   title: Text(
-                    classdata[index],
+                    Groupdclassdata[index],
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                   ),
                   subtitle: Text('Top to see your courses'),
@@ -160,22 +400,17 @@ class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
           ),
         );
       },
-      //   padding: EdgeInsets.all(16.0),
-      // children: [
-      //   Text("fgyhuij")
-
-      // ],
     );
-  
-  
   }
 
+ 
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: CustomAppBar(
-        title: "Education App",
+        title: "SING IN",
         scaffoldKey: _scaffoldKey,
       ),
       drawer: CustomDrawer(),
@@ -201,7 +436,7 @@ class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
                         width: 55,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Colors.blue),
+                            color: AppColor.Allcolor),
                         child: Icon(Icons.api_sharp, color: Colors.white)),
                     title: Text(
                       "My Courses",
@@ -214,42 +449,44 @@ class _ApniKakshaAppScreennState extends State<ApniKakshaAppScreenn>
           ),
           // Custom TabBar aligned to the left
           Container(
-            //color: Colors.blue,
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-            child: Row(
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CustomTab(
-                        label: "All",
-                        isSelected: _selectedTabIndex == 0,
-                        onTap: () => _onTabSelected(0),
-                      ),
-                      CustomTab(
-                        label: "JEE",
-                        isSelected: _selectedTabIndex == 1,
-                        onTap: () => _onTabSelected(1),
-                      ),
-                      CustomTab(
-                        label: "Boards",
-                        isSelected: _selectedTabIndex == 2,
-                        onTap: () => _onTabSelected(2),
-                      ),
-                      CustomTab(
-                        label: "Free Batches",
-                        isSelected: _selectedTabIndex == 3,
-                        onTap: () => _onTabSelected(3),
-                      ),
-                    ],
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CustomTab(
+                    label: "All",
+                    isSelected: _selectedTabIndex == 0,
+                    onTap: () => _onTabSelected(0),
                   ),
-                ),
-              ],
+                  CustomTab(
+                    label: "JEE",
+                    isSelected: _selectedTabIndex == 1,
+                    onTap: () => _onTabSelected(1),
+                  ),
+                  CustomTab(
+                    label: "NEET",
+                    isSelected: _selectedTabIndex == 2,
+                    onTap: () => _onTabSelected(2),
+                  ),
+                  CustomTab(
+                    label: "GROUP D",
+                    isSelected: _selectedTabIndex == 3,
+                    onTap: () => _onTabSelected(3),
+                  ),
+                  CustomTab(
+                    label: "Free Batches",
+                    isSelected: _selectedTabIndex == 4,
+                    onTap: () => _onTabSelected(4),
+                  ),
+                ],
+              ),
             ),
           ),
+
           // Dynamic Content Area
+
           Expanded(
             child: _buildTabContent(),
           ),

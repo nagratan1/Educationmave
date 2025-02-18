@@ -1,5 +1,6 @@
 import 'package:education/11thCalss(VOD%20Batch)/youtube.dart';
 import 'package:education/JEE/JEEVideoPlay.dart';
+import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:video_player/video_player.dart';
@@ -187,7 +188,7 @@ String _formatDuration(Duration duration) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: AppColor.dashbord,
         leading: InkWell(
             onTap: () {
               Navigator.of(context).pop();
@@ -212,7 +213,7 @@ String _formatDuration(Duration duration) {
       body: Column(
         children: [
           Container(
-            color: Colors.blue[200],
+            color: AppColor.dashbord,
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
             child: Row(
               children: [
@@ -269,7 +270,7 @@ class CustomTab extends StatelessWidget {
         //margin: EdgeInsets.symmetric(horizontal: 8),
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.white : Colors.blue[200],
+          color: isSelected ? Colors.white : AppColor.Allcolor,
           //borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.white),
         ),
@@ -277,7 +278,7 @@ class CustomTab extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-              color: isSelected ? Colors.blue[300] : Colors.white,
+              color: isSelected ? AppColor.Allcolor : Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),

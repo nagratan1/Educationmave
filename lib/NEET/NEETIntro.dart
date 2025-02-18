@@ -1,17 +1,16 @@
-import 'package:education/11thCalss(VOD%20Batch)/11classbatchvideo.dart';
-import 'package:education/Screen/HomePage.dart';
+import 'package:education/NEET/NEEtvideolist.dart';
 import 'package:education/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Intro extends StatefulWidget {
-  const Intro({super.key});
+class NeetIntro extends StatefulWidget {
+  const NeetIntro({super.key});
 
   @override
-  State<Intro> createState() => _IntroState();
+  State<NeetIntro> createState() => _NeetIntroState();
 }
 
-class _IntroState extends State<Intro> {
+class _NeetIntroState extends State<NeetIntro> {
   @override
   Widget build(BuildContext context) {
     return 
@@ -40,7 +39,7 @@ class _IntroState extends State<Intro> {
                     index == 0
                 ? Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => classvideoList()),
+                    MaterialPageRoute(builder: (context) => Neetvideolist()),
                   )
                 : null;
                     
@@ -69,14 +68,14 @@ class _IntroState extends State<Intro> {
                                   color: AppColor.Allcolor),
                               child: Icon(Icons.text_fields_rounded, color: Colors.white)),
                           title: Text(
-                            "All",
+                            "All Classes",
                             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                           trailing: Container(
                             height: 40, 
                             width: 40 , 
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),color:AppColor.Allcolor),
-                            child:Center(child: Text("6",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),))
+                            child:Center(child: Text("8",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),))
                           ),
                          
                           
